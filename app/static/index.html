@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhishGuard AI | Triagem de phishing</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script defer src="/static/app.js"></script>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <main class="shell">
+    <header><div class="logo"><span class="logo-icon">◆</span> PHISHGUARD <b>AI</b></div><span class="status">● PROTÓTIPO ACADÊMICO</span></header>
+    <div class="heading"><p class="eyebrow">IA LOCAL · SEGURANÇA POR DESIGN</p><h1>Analise mensagens.<br><em>Identifique riscos.</em></h1>
+      <p>Uma demonstração de triagem de e-mails suspeitos com aprendizado de máquina e fluxo DevSecOps.</p></div>
+    <section class="columns">
+      <form id="form" class="panel">
+        <div class="panel-title"><span>01</span> Mensagem para análise</div>
+        <label for="subject">ASSUNTO</label><input id="subject" maxlength="180" required minlength="3" placeholder="Ex.: Atualização urgente de conta">
+        <label for="body">CORPO DA MENSAGEM</label><textarea id="body" required minlength="5" maxlength="5000" placeholder="Cole somente mensagens simuladas, sem dados pessoais..." rows="8"></textarea>
+        <div class="actions"><button type="button" class="ghost" id="demo">Preencher exemplo</button><button type="submit" id="submit">Analisar mensagem →</button></div>
+      </form>
+      <div class="panel outcome"><div class="panel-title"><span>02</span> Resultado da IA</div>
+        <div class="icon-box">◇</div><p class="res-label">CLASSIFICAÇÃO DE RISCO</p>
+        <div class="risk" id="risk">Aguardando análise</div>
+        <div class="score-title">Probabilidade estimada de phishing <strong id="score">—</strong></div>
+        <div class="meter"><div id="fill"></div></div>
+        <div class="hints"><p>INDICADORES IDENTIFICADOS</p><ul id="hints"><li>Insira um exemplo para iniciar.</li></ul></div>
+        <small id="disclaimer">Este protótipo não decide sozinho se um e-mail é seguro.</small>
+      </div>
+    </section>
+    <footer><span>PhishGuard AI v1.0 · Dataset 100% sintético · Sem banco de dados</span><span>FastAPI + scikit-learn + GitHub Actions</span></footer>
+  </main>
+</body>
+</html>

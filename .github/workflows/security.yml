@@ -1,0 +1,45 @@
+name: DevSecOps - testes e analise
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  app-security:
+    name: Tests + SAST + SCA
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Instalar dependencias
+        run: python -m pip install -r requirements-dev.txt
+      - name: Testes automatizados
+        run: python -m pytest -q
+      - name: SAST - Bandit (medio/alto)
+        run: bandit -r app -ll
+      - name: SCA - vulnerabilidades conhecidas
+        run: pip-audit -r requirements.txt
+
+  container-security:
+    name: Docker + Trivy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Criar imagem
+        run: docker build -t phishguard-ai:ci .
+      - name: Trivy - bloquear CVEs altas e criticas
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: phishguard-ai:ci
+          format: table
+          severity: HIGH,CRITICAL
+          exit-code: '1'
+          ignore-unfixed: true

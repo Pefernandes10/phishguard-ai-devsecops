@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: phishguard-ai-academico
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    autoDeployTrigger: checksPass
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"

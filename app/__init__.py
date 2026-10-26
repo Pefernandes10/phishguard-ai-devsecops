@@ -1,0 +1,1 @@
+"""Protótipo didático PhishGuard AI."""
