@@ -68,14 +68,6 @@ Dockerfile               Imagem executada por usuário sem root
 render.yaml              Blueprint para publicar no Render
 ```
 
-## Roteiro de publicação no GitHub
-1. Entre em https://github.com/new e crie um repositório `phishguard-ai-devsecops`.
-2. Extraia esta pasta para o computador, abra o terminal nela e rode `git init`, `git add .`, `git commit -m "Prototipo PhishGuard AI"`.
-3. Siga as instruções exibidas pelo GitHub para conectar o remote e enviar `main`.
-4. Confira a aba **Actions**; corrija qualquer falha (não desative os scanners para obter verde).
-5. Configure aprovação de PR e bloqueio de merge quando checks falharem.
-6. No Render, crie um Blueprint usando o arquivo `render.yaml`, revisando recursos e custos antes da implantação.
-7. Substitua o placeholder de link GitHub na sua apresentação pelo endereço real.
 
 ## Fontes oficiais
 - LGPD: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm
